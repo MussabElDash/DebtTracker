@@ -7,6 +7,9 @@ gem 'rails', '4.1.4'
 
 # User authentication
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'table_print'
 
@@ -51,6 +54,9 @@ gem 'spring',        group: :development
 # Use unicorn as the app server
 gem 'unicorn'
 gem 'foreman'
+
+# Use figaro to manage environment variables
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -11,30 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818121254) do
+ActiveRecord::Schema.define(version: 20140819152909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "debts", force: true do |t|
-    t.decimal  "amount"
-    t.decimal  "remaining"
-    t.string   "currency"
-    t.boolean  "confirmed"
-    t.text     "description"
-    t.integer  "creditor_id"
-    t.integer  "debtor_id"
+    t.float    "amount",                       null: false
+    t.float    "remaining",                    null: false
+    t.string   "currency",     default: "usd", null: false
+    t.datetime "confirmed_at"
+    t.text     "description",  default: "",    null: false
+    t.integer  "creditor_id",                  null: false
+    t.integer  "debtor_id",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "debts", ["creditor_id"], name: "index_debts_on_creditor_id", using: :btree
+  add_index "debts", ["debtor_id"], name: "index_debts_on_debtor_id", using: :btree
+
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",  null: false
+    t.string   "encrypted_password",     default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -43,17 +46,19 @@ ActiveRecord::Schema.define(version: 20140818121254) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,   null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "first_name",                          null: false
-    t.string   "last_name",                           null: false
+    t.string   "first_name",                           null: false
+    t.string   "last_name",                            null: false
     t.text     "image"
     t.string   "user_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.float    "creditor_total",         default: 0.0, null: false
+    t.float    "debtor_total",           default: 0.0, null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

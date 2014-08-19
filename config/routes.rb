@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
+
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
 
 	# You can have the root of your site routed with "root"
-	root 'site#index'
+	authenticated :user do
+		root :to => 'users#index', as: :authenticated_root
+	end
+	root :to => 'site#index'
+
 	devise_for :users, :controllers => 
 		{ :omniauth_callbacks => "users/omniauth_callbacks" }
 
 	get 'site/index'
+	get 'users/index'
 
 	# Example of regular route:
 	#   get 'products/:id' => 'catalog#view'
+	get 'users/show/:id' => 'users#show', as: :users_show
 
 	# Example of named route that can be invoked with purchase_url(id: product.id)
 	#   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

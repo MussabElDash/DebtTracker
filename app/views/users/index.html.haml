@@ -1,0 +1,163 @@
+- net = current_user.creditor_total - current_user.debtor_total
+#net
+	Net : 
+	= net
+%h2 Debts
+%h3 As Creditor
+%h4 Recent
+- current_user.debts_creditor.order(updated_at: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_recent_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Oldest
+- current_user.debts_creditor.order(updated_at: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Top Amount
+- current_user.debts_creditor.order(amount: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Least Amount
+- current_user.debts_creditor.order(amount: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_least_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Top Remaining
+- current_user.debts_creditor.order(remaining: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Least Remaining
+- current_user.debts_creditor.order(remaining: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_least_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+
+%h3 As Debtor
+%h4 Recent
+- current_user.debts_debtor.order(updated_at: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_recent_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Oldest
+- current_user.debts_debtor.order(updated_at: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Top Amount
+- current_user.debts_debtor.order(amount: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Least Amount
+- current_user.debts_debtor.order(amount: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_least_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Top Remaining
+- current_user.debts_debtor.order(remaining: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)
+
+%h4 Least Remaining
+- current_user.debts_debtor.order(remaining: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_least_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, users_show_path(debt.debtor)

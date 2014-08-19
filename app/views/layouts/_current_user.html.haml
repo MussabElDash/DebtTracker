@@ -1,7 +1,7 @@
 - if user_signed_in?
 	%div 
 		= image_tag(current_user.image, size: '32x32', alt: 'Profile Picture missing')
-		= "#{current_user.first_name}  #{current_user.last_name}"
+		= current_user.name
 		= link_to "Sign out", destroy_user_session_path, method: :delete
 - elsif !params[:controller].include?("devise")
 	%div= link_to "Sign in", new_user_session_path

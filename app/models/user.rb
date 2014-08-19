@@ -6,8 +6,12 @@ class User < ActiveRecord::Base
 		   :confirmable, :lockable, :omniauth_providers => [:facebook, :google]
 
 	# Associations
-	has_many :debts_creditor, class_name: 'Debt', foreign_key: :creditor_id
-	has_many :debts_debtor, class_name: 'Debt', foreign_key: :debtor_id
+	has_many :debts_creditor, class_name: 'Debt', foreign_key: :creditor_id, dependent: :destroy
+	has_many :debts_debtor, class_name: 'Debt', foreign_key: :debtor_id, dependent: :destroy
+
+	# Validations
+	validates :first_name, presence: true
+	validates :last_name, presence: true
 
 	# Methods
 	def self.from_omniauth(auth)
@@ -30,5 +34,9 @@ class User < ActiveRecord::Base
 				user.email = data["email"] if user.email.blank?
 			end
 		end
+	end
+
+	def name
+		"#{first_name} #{last_name}"
 	end
 end

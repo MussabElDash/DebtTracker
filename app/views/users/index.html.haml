@@ -1,8 +1,8 @@
 - net = current_user.creditor_total - current_user.debtor_total
+%hr
 #net
 	Net : 
 	%span= net
-= link_to 'New Debt', new_debt_path
 %h2 Debts
 = render partial: 'index_creditor', locals: {user: current_user}
 %hr

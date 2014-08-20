@@ -11,6 +11,7 @@ user1 = User.new do |user|
 	user.last_name = 1
 	user.password = 123456789
 	user.email = '1@user.com'
+	user.user_name = "user1"
 	user.skip_confirmation!
 	user.save!
 end
@@ -19,6 +20,7 @@ user2 = User.new do |user|
 	user.last_name = 2
 	user.password = 123456789
 	user.email = '2@user.com'
+	user.user_name = "user2"
 	user.skip_confirmation!
 	user.save!
 end
@@ -27,6 +29,7 @@ user3 = User.new do |user|
 	user.last_name = 3
 	user.password = 123456789
 	user.email = '3@user.com'
+	user.user_name = "user3"
 	user.skip_confirmation!
 	user.save!
 end

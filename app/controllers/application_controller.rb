@@ -7,16 +7,19 @@ class ApplicationController < ActionController::Base
 
 private
 	def update_sanitized_params
-		devise_parameter_sanitizer.for(:sign_up) {
-					|user| user.permit(:email, :user_name,
-						:first_name, :last_name, :image,
-						:password, :password_confirmation)
-				}
-				devise_parameter_sanitizer.for(:account_update) {
-					|user| user.permit(:email, :user_name, :current_password,
-						:first_name, :last_name, :image,
-						:password, :password_confirmation)
-				}
+		devise_parameter_sanitizer.for(:sign_up) do |user|
+			user.permit(:email, :user_name,
+				:first_name, :last_name, :image,
+				:password, :password_confirmation)
+		end
+		devise_parameter_sanitizer.for(:account_update) do |user|
+			user.permit(:email, :user_name, :current_password,
+				:first_name, :last_name, :image,
+				:password, :password_confirmation)
+		end
+		devise_parameter_sanitizer.for(:sign_in) do |user|
+			user.permit(:login, :username, :email, :password, :remember_me)
+		end
 	end
 
 	def authenticate!

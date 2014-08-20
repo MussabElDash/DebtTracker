@@ -7,7 +7,7 @@ class Debt < ActiveRecord::Base
 
 	# Validations
 	before_create :validate_confirmed_at
-	before_validation :fill_remaining, on: :create
+	before_validation :fill_remaining
 	validate :valid_remaining
 	validates :amount, presence: true
 	validates :remaining, presence: true
@@ -31,13 +31,17 @@ private
 	end
 
 	def fill_remaining
-		self.remaining = self.amount if self.remaining.nil?
+		if self.remaining.nil? and self.confirmed_at.present?
+			self.remaining = self.amount 
+		elsif self.confirmed_at.nil?
+			self.remaining = 0
+		end
 	end
 
 	def valid_remaining
-		if self.remaining.present? and self.remaining > self.amount
+		if self.remaining.present? and (self.remaining > self.amount or self.reamaining < 0)
 			self.reload
-			errors.add(:remaining, "must be less than or equal the amount")
+			errors.add(:remaining, "must be less than or equal the amount and bigger than or equal zero")
 		end
 	end
 end

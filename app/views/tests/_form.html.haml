@@ -1,0 +1,16 @@
+= form_for @test do |f|
+  - if @test.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@test.errors.count, "error")} prohibited this test from being saved:"
+      %ul
+        - @test.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :number
+    = f.text_field :number
+  .actions
+    = f.submit 'Save'

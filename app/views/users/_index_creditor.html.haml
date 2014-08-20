@@ -1,0 +1,84 @@
+%h3 As Creditor
+%h4 Recent
+- user.debts_creditor.order(updated_at: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_recent_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, user_path(debt.debtor)
+		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+
+%h4 Oldest
+- user.debts_creditor.order(updated_at: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, user_path(debt.debtor)
+		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+
+%h4 Top Amount
+- user.debts_creditor.order(amount: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, user_path(debt.debtor)
+		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+
+%h4 Least Amount
+- user.debts_creditor.order(amount: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_least_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, user_path(debt.debtor)
+		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+
+%h4 Top Remaining
+- user.debts_creditor.order(remaining: :desc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_top_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, user_path(debt.debtor)
+		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+
+%h4 Least Remaining
+- user.debts_creditor.order(remaining: :asc).
+	- where.not(confirmed_at: nil).take(2).each do |debt|
+	%div{id: "creditor_least_amount_#{debt.id}"}
+		amount : 
+		= debt.amount
+		%br
+		remaining : 
+		= debt.remaining
+		%br
+		debtor : 
+		= link_to debt.debtor.name, user_path(debt.debtor)
+		/ = link_to :Remove, destroy_debt_path(debt), method: :delete

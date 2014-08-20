@@ -12,18 +12,18 @@ Rails.application.routes.draw do
 	devise_for :users, :controllers => 
 		{ :omniauth_callbacks => "users/omniauth_callbacks" }
 
-	get 'site/index'
-	get 'users/index'
+	# get 'users/index'
 
 	# Example of regular route:
 	#   get 'products/:id' => 'catalog#view'
-	get 'users/show/:id' => 'users#show', as: :users_show
+	get '/:id' => 'users#show', as: :user
 
 	# Example of named route that can be invoked with purchase_url(id: product.id)
 	#   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
 	# Example resource route (maps HTTP verbs to controller actions automatically):
 	#   resources :products
+	resources :debts
 
 	# Example resource route with options:
 	#   resources :products do

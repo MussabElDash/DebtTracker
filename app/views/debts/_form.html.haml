@@ -1,0 +1,27 @@
+= form_for @debt do |f|
+	- if @debt.errors.any?
+		#error_explanation
+			%h2= "#{pluralize(@debt.errors.count, "error")} prohibited this debt from being saved:"
+			%ul
+				- @debt.errors.full_messages.each do |msg|
+					%li= msg
+	.field
+		= f.label :Creditor
+		= f.text_field :creditor
+	.field
+		= f.label :debtor
+		= f.text_field :debtor
+	.field
+		= f.label :currency
+		= f.text_field :currency
+	.field
+		= f.label :amount
+		= f.text_field :amount
+	.field
+		= f.label :remaining
+		= f.text_field :remaining
+	.field
+		= f.label :description
+		= f.text_area :description
+	.actions
+		= f.submit :Add

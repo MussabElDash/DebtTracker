@@ -5,21 +5,8 @@
 			%ul
 				- @debt.errors.full_messages.each do |msg|
 					%li= msg
-	- if @debt.creditor.nil?
-		.field
-			= f.label :Creditor
-			= f.text_field :creditor
-	- elsif @debt.debtor.nil?
-		.field
-			= f.label :debtor
-			= f.text_field :debtor
-	- else
-		.field
-			= f.label :Creditor
-			= f.text_field :creditor
-		.field
-			= f.label :debtor
-			= f.text_field :debtor
+	= f.hidden_field :creditor_id
+	= f.hidden_field :debtor_id
 	.field
 		= f.label :currency
 		= f.text_field :currency

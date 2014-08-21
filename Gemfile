@@ -15,6 +15,7 @@ gem 'table_print'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'pg_search'
 
 gem 'rails_12factor', group: :production
 

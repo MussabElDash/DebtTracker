@@ -1,5 +1,8 @@
 - net = current_user.creditor_total - current_user.debtor_total
 %hr
+= form_for :search, url:{controller: :users, action: :search}, method: :get do |f|
+	= f.text_field :id
+	= f.submit :Search
 #net
 	Net : 
 	%span= net

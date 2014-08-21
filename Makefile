@@ -14,9 +14,12 @@ seed:
 	rake db:schema:load
 	rake db:seed
 
-migrate:
-	rake db:migrate:down VERSION=20140817174317
-	rake db:migrate:down VERSION=20140817184941
-	rake db:migrate:down VERSION=20140818121254
+migrate_down:
+	rake db:schema:load
 	rake db:migrate:down VERSION=20140819152909
+	rake db:migrate:down VERSION=20140818121254
+	rake db:migrate:down VERSION=20140817184941
+	rake db:migrate:down VERSION=20140817174317
+
+migrate: migrate_down
 	rake db:migrate

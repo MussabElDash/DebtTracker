@@ -9,6 +9,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
@@ -23,6 +29,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
@@ -37,6 +49,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
@@ -51,6 +69,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
@@ -65,6 +89,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
@@ -79,6 +109,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete

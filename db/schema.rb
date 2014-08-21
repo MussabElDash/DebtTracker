@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 20140819152909) do
   enable_extension "plpgsql"
 
   create_table "debts", force: true do |t|
-    t.float    "amount",                       null: false
-    t.float    "remaining",                    null: false
-    t.string   "currency",     default: "usd", null: false
+    t.float    "amount",                    null: false
+    t.float    "remaining",                 null: false
+    t.string   "currency",                  null: false
     t.datetime "confirmed_at"
-    t.text     "description",  default: "",    null: false
-    t.integer  "creditor_id",                  null: false
-    t.integer  "debtor_id",                    null: false
+    t.text     "description",  default: "", null: false
+    t.integer  "creditor_id",               null: false
+    t.integer  "debtor_id",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -9,6 +9,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		creditor : 
 		= link_to debt.creditor.name, user_path(debt.creditor)
 
@@ -22,6 +28,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		creditor : 
 		= link_to debt.creditor.name, user_path(debt.creditor)
 
@@ -35,6 +47,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		creditor : 
 		= link_to debt.creditor.name, user_path(debt.creditor)
 
@@ -48,6 +66,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		creditor : 
 		= link_to debt.creditor.name, user_path(debt.creditor)
 
@@ -61,6 +85,12 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		creditor : 
 		= link_to debt.creditor.name, user_path(debt.creditor)
 
@@ -74,5 +104,11 @@
 		remaining : 
 		= debt.remaining
 		%br
+		currency :
+		= "#{Debt::CURRENCIES[debt.currency][:name]} (#{debt.currency})"
+		%br
+		- if debt.description.length > 0
+			= debt.description
+			%br
 		creditor : 
 		= link_to debt.creditor.name, user_path(debt.creditor)

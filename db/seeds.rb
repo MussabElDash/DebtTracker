@@ -39,6 +39,7 @@ debt1 = Debt.new do |debt|
 	debt.remaining = 5
 	debt.creditor = user1
 	debt.debtor = user2
+	debt.currency = 'usd'
 	debt.skip_confirmation!
 	debt.save!
 end
@@ -46,12 +47,14 @@ debt2 = Debt.new do |debt|
 	debt.amount = 30
 	debt.creditor = user1
 	debt.debtor = user3
+	debt.currency = 'usd'
 	debt.save!
 end
 debt3 = Debt.new do |debt|
 	debt.amount = 40
 	debt.creditor = user2
 	debt.debtor = user1
+	debt.currency = 'usd'
 	debt.save!
 end
 debt4 = Debt.new do |debt|
@@ -59,6 +62,7 @@ debt4 = Debt.new do |debt|
 	debt.remaining = 10
 	debt.creditor = user2
 	debt.debtor = user3
+	debt.currency = 'usd'
 	debt.skip_confirmation!
 	debt.save!
 end
@@ -66,6 +70,7 @@ debt5 = Debt.new do |debt|
 	debt.amount = 100
 	debt.creditor = user3
 	debt.debtor = user1
+	debt.currency = 'usd'
 	debt.skip_confirmation!
 	debt.save!
 end
@@ -74,6 +79,7 @@ debt6 = Debt.new do |debt|
 	debt.remaining = 15
 	debt.creditor = user3
 	debt.debtor = user2
+	debt.currency = 'usd'
 	debt.skip_confirmation!
 	debt.save!
 end

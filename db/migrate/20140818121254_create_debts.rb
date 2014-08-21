@@ -3,7 +3,7 @@ class CreateDebts < ActiveRecord::Migration
     create_table :debts do |t|
       t.float :amount,    null: false
       t.float :remaining, null: false
-      t.string :currency, null: false, default: 'usd'
+      t.string :currency, null: false
       t.datetime :confirmed_at
       t.text :description, null: false, default: ''
 

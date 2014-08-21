@@ -2,8 +2,12 @@ class Debt < ActiveRecord::Base
 	# Associations
 	belongs_to :creditor, class_name: 'User'
 	belongs_to :debtor, class_name: 'User'
-	counter_culture :creditor, column_name: :creditor_total, delta_column: :remaining
-	counter_culture :debtor, column_name: :debtor_total, delta_column: :remaining
+	counter_culture :creditor, 
+		column_name: Proc.new {|model| model.confirmed_at.present? ? :creditor_total : nil}, 
+		delta_column: :remaining
+	counter_culture :debtor, 
+		column_name: Proc.new {|model| model.confirmed_at.present? ? :debtor_total : nil}, 
+		delta_column: :remaining
 
 	# Validations
 	before_create :validate_confirmed_at
@@ -18,10 +22,12 @@ class Debt < ActiveRecord::Base
 	# Methods
 	def skip_confirmation!
 		self.confirmed_at = Time.now
+		return self
 	end
 
 	def skip_remaining!
 		self.remaining = self.amount
+		return self
 	end
 
 private

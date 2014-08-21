@@ -1,7 +1,7 @@
 %h3 As Debtor
 %h4 Recent
 - user.debts_debtor.order(updated_at: :desc).
-	- where.not(confirmed_at: nil).take(2).each do |debt|
+	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
 	%div{id: "creditor_recent_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -20,7 +20,7 @@
 
 %h4 Oldest
 - user.debts_debtor.order(updated_at: :asc).
-	- where.not(confirmed_at: nil).take(2).each do |debt|
+	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
 	%div{id: "creditor_top_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -39,7 +39,7 @@
 
 %h4 Top Amount
 - user.debts_debtor.order(amount: :desc).
-	- where.not(confirmed_at: nil).take(2).each do |debt|
+	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
 	%div{id: "creditor_top_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -58,7 +58,7 @@
 
 %h4 Least Amount
 - user.debts_debtor.order(amount: :asc).
-	- where.not(confirmed_at: nil).take(2).each do |debt|
+	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
 	%div{id: "creditor_least_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -77,7 +77,7 @@
 
 %h4 Top Remaining
 - user.debts_debtor.order(remaining: :desc).
-	- where.not(confirmed_at: nil).take(2).each do |debt|
+	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
 	%div{id: "creditor_top_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -96,7 +96,7 @@
 
 %h4 Least Remaining
 - user.debts_debtor.order(remaining: :asc).
-	- where.not(confirmed_at: nil).take(2).each do |debt|
+	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
 	%div{id: "creditor_least_amount_#{debt.id}"}
 		amount : 
 		= debt.amount

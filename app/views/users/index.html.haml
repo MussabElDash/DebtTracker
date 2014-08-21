@@ -1,6 +1,6 @@
 - net = current_user.creditor_total - current_user.debtor_total
 %hr
-= form_for :search, url:{controller: :users, action: :search}, method: :get do |f|
+= form_for :search, url: :search_users, method: :get do |f|
 	= f.text_field :id
 	= f.submit :Search
 #net
@@ -10,3 +10,5 @@
 = render partial: 'index_creditor', locals: {user: current_user}
 %hr
 = render partial: 'index_debtor', locals: {user: current_user}
+%hr
+= render partial: 'index_unconfirmed', locals: {user: current_user}

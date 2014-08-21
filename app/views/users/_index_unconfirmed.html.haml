@@ -1,7 +1,7 @@
-%h3 As Creditor
+%h3 Unconfirmed Debts
 %h4 Recent
-- user.debts_creditor.order(updated_at: :desc).
-	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
+- user.debts_debtor.order(updated_at: :desc).
+	- where(confirmed_at: nil).take(2).each do |debt|
 	%div{id: "creditor_recent_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -18,10 +18,12 @@
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+		%br
+		= link_to :Confirm, confirm_debt_path(debt), method: :post
 
 %h4 Oldest
-- user.debts_creditor.order(updated_at: :asc).
-	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
+- user.debts_debtor.order(updated_at: :asc).
+	- where(confirmed_at: nil).take(2).each do |debt|
 	%div{id: "creditor_top_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -38,10 +40,12 @@
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+		%br
+		= link_to :Confirm, confirm_debt_path(debt), method: :post
 
 %h4 Top Amount
-- user.debts_creditor.order(amount: :desc).
-	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
+- user.debts_debtor.order(amount: :desc).
+	- where(confirmed_at: nil).take(2).each do |debt|
 	%div{id: "creditor_top_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -58,10 +62,12 @@
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+		%br
+		= link_to :Confirm, confirm_debt_path(debt), method: :post
 
 %h4 Least Amount
-- user.debts_creditor.order(amount: :asc).
-	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
+- user.debts_debtor.order(amount: :asc).
+	- where(confirmed_at: nil).take(2).each do |debt|
 	%div{id: "creditor_least_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -78,10 +84,12 @@
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+		%br
+		= link_to :Confirm, confirm_debt_path(debt), method: :post
 
 %h4 Top Remaining
-- user.debts_creditor.order(remaining: :desc).
-	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
+- user.debts_debtor.order(remaining: :desc).
+	- where(confirmed_at: nil).take(2).each do |debt|
 	%div{id: "creditor_top_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -98,10 +106,12 @@
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+		%br
+		= link_to :Confirm, confirm_debt_path(debt), method: :post
 
 %h4 Least Remaining
-- user.debts_creditor.order(remaining: :asc).
-	- where.not(confirmed_at: nil, remaining: 0).take(2).each do |debt|
+- user.debts_debtor.order(remaining: :asc).
+	- where(confirmed_at: nil).take(2).each do |debt|
 	%div{id: "creditor_least_amount_#{debt.id}"}
 		amount : 
 		= debt.amount
@@ -118,3 +128,5 @@
 		debtor : 
 		= link_to debt.debtor.name, user_path(debt.debtor)
 		/ = link_to :Remove, destroy_debt_path(debt), method: :delete
+		%br
+		= link_to :Confirm, confirm_debt_path(debt), method: :post
